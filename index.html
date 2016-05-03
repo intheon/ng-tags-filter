@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+<div ng-app="ngFilterApp">
+
+	<div ng-controller="MainCtrl as vm" class="main-wrapper">
+
+		<h4>Time to filter some tags</h4>
+
+		<div class="tags-style-wrapper row">
+
+			<div>Available tags</div>
+			<div ng-repeat="selectableTag in vm.tags" class="tag clickable" ng-click="vm.performFilter(selectableTag, $event)" >{{ selectableTag }}</div>
+
+		</div>
+
+		<div class="row">
+			<h4>Tags selected</h4>
+			<li ng-repeat="tag in vm.tagsSelected">
+				{{ tag }}
+			</li>
+		</div>
+
+		<!--
+		<div class="row">
+				
+			<div ng-repeat="parks in vm.dataSet | deepFilter">
+				
+				<h5>{{ data.name }}</h5>
+
+				<h6 ng-repeat="deep in data.deepData">
+					{{ deep }}
+				</h6>
+
+			</div>
+
+		</div>
+
+		-->
+
+		<div class="row">
+
+			<h4>Skateparks</h4>
+			<div ng-repeat="park in vm.filteredParks" class="park-listing">
+
+				<header>{{ park.skateparkName }}</header>
+				<div ng-repeat="tag in park.skateparkTags" class="tag small">{{ tag }}</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+<script type="text/javascript" src="js/vendor/angular.js"></script>
+<script type="text/javascript" src="js/vendor/jquery.js"></script>
+
+<script type="text/javascript" src="js/src/filters.js"></script>
+<script type="text/javascript" src="js/src/services.js"></script>
+
+<script type="text/javascript" src="js/src/controllers.js"></script>
+<script type="text/javascript" src="js/src/app.js"></script>
+
+</body>
+</html>
